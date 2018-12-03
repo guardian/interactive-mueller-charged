@@ -4,23 +4,29 @@
             <p>Proin blandit, enim vitae egestas posuere, neque elit ultricies dui, vel mattis nibh enim ac lorem. Maecenas molestie nisl sit amet velit dictum lobortis. Aliquam erat volutpat.</p>
 
             {{#each groups}}
-                <div class='uit-group'>
-                    <h2 class='uit-subhead uit-group__subhead'>{{ @key }}</h2>
-                    {{#each people}}
-                        <div class='uit-person'>
-                            <div class='uit-person__thumbnail'>
-                                <img class='uit-person__image' src='{{ path }}/assets/{{ handlise name }}.jpg' />
-                                <h3 class='uit-person__name'>{{ name }}</h3>
-                                <h3 class='uit-person__position'>{{ position }}</h3>
+                <div class='uit-group uit-group--{{ handlise @key }}'>
+                    <h2 class='uit-group__subhead'>
+                        <span class='uit-group__subhead__inner'>{{ @key }}</span>
+                    </h2>
+                    <div class='uit-people'>
+                        {{#each people}}
+                            <div class='uit-person'>
+                                <div class='uit-person__thumbnail'>
+                                    <div class='uit-person__image-wrapper'>
+                                        <img class='uit-person__image' src='{{ path }}/assets/{{ handlise name }}.jpg' />
+                                    </div>
+                                    <h3 class='uit-person__name'>{{ name }}</h3>
+                                    <h3 class='uit-person__position'>{{ position }}</h3>
+                                </div>
+                                <div class='uit-person__card'>
+                                    {{ marked description }}
+                                    {{#if next}}
+                                    <p><strong>What happens next</strong><br />{{ next }}</p>
+                                    {{/if}}
+                                </div>
                             </div>
-                            <div class='uit-person__card'>
-                                <p>{{ description }}</p>
-                                {{#if next}}
-                                <p><strong>What happens next</strong><br />{{ next }}</p>
-                                {{/if}}
-                            </div>
-                        </div>
-                    {{/each}}
+                        {{/each}}
+                    </div>
                 </div>
             {{/each}}
         </div>

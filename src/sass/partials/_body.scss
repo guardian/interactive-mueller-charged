@@ -19,18 +19,113 @@
     }
 }
 
-.uit-drop {
-    @include dropCap(4);
-    font-weight: bold;
-    color: $c-red;
+.uit-group {
+    position: relative;
 }
 
-.uit-subhead {
-    @include banding($c-yellow);
-    font-size: 24px;
-    font-weight: bold;
+.uit-group__subhead {
+    margin-bottom: 4px;
+
+    @include mq(leftCol) {
+        position: absolute;
+        top: 0;
+        left: -160px;
+        max-width: 140px;
+    }
+
+    @include mq(wide) {
+        left: -240px;
+        max-width: 220px;
+    }
 }
 
-.uit-button {
-    @include button($c-white, $c-red);
+.uit-people {
+    position: relative;
+    margin-bottom: 24px;
+
+    @include mq(tablet) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-row-gap: 24px;
+        grid-column-gap: 20px;
+        grid-template-rows: auto;
+    }
+
+    @include mq(desktop) {
+        grid-template-columns: repeat(4, 1fr);
+        grid-row-gap: 12px;
+        margin-bottom: 32px;
+    }
+}
+
+.uit-person__thumbnail {
+    &:hover ~ .uit-person__card {
+        opacity: 1;
+    }
+}
+
+.uit-person__image-wrapper {
+    width: 48px;
+    height: 48px;
+    background-color: $c-light-grey;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.uit-person__image {
+    width: 100%;
+    height: 100%;
+}
+
+.uit-person__name {
+    font-family: 'Guardian Egyptian Web';
+    font-size: 18px;
+    font-weight: 700;
+    color: $c-black;
+    margin: 0;
+}
+
+.uit-person__position {
+    font-family: 'Guardian Egyptian Web';
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+    margin: 0;
+}
+
+.uit-person__card {
+    position: absolute;
+    z-index: 3;
+    background-color: $c-white;
+    border: 1px solid $c-black;
+    box-shadow: 3px 3px 0px $c-black;
+    max-width: 320px;
+    box-sizing: border-box;;
+    padding: 6px;
+    font-family: 'Guardian Text Egyptian Web';
+    font-size: 16px;
+    transition: opacity 0.4s linear;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.uit-group--convicted .uit-group__subhead {
+    @include banding($c-red);
+    color: $c-white;
+}
+
+.uit-group--pled-guilty .uit-group__subhead {
+    @include banding($c-light-red);
+    color: $c-white;
+}
+
+.uit-group--charged .uit-group__subhead {
+    @include banding(lighten($c-light-red, 30%));
+    color: $c-black;
+}
+
+.uit-group--person-of-interest .uit-group__subhead {
+    @include banding($c-light-grey);
+    color: $c-black;
 }
