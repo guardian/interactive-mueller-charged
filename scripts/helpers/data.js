@@ -25,16 +25,22 @@ function fetchData(callback) {
 }
 
 function sortResults(data) {
-    if (data.length === 0) {
-        data = data[0]
-    } else {
-        data = {
-            'sheet1': data[0],
-            'sheet2': data[1]
-        }
+    var groups = {
+        'Convicted': {people: []},
+        'Pled guilty': {people: []},
+        'Charged': {people: []},
+        'Person of interest': {people: []}
+    };
+
+    for (var i in data[0]) {
+        var person = data[0][i];
+
+        groups[person.state].people.push(person);
     }
 
-    return data;
+    return {
+        groups: groups
+    }
 }
 
 module.exports = function getData() {
@@ -43,6 +49,8 @@ module.exports = function getData() {
     fetchData(function(result) {
         data = result;
         data = sortResults(data);
+
+        console.log(data);
 
         isDone = true;
     });

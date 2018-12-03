@@ -2,6 +2,15 @@
     <div class='uit-container'>
         <div class='uit-content'>
             <p>Proin blandit, enim vitae egestas posuere, neque elit ultricies dui, vel mattis nibh enim ac lorem. Maecenas molestie nisl sit amet velit dictum lobortis. Aliquam erat volutpat.</p>
+
+            {{#each groups}}
+                <div class='uit-group'>
+                    <h2 class='uit-subhead uit-group__subhead'>{{ @key }}</h2>
+                    {{#each people}}
+                        {{ name }}
+                    {{/each}}
+                </div>
+            {{/each}}
         </div>
     </div>
 </div>
