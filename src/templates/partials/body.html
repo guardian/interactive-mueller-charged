@@ -7,7 +7,19 @@
                 <div class='uit-group'>
                     <h2 class='uit-subhead uit-group__subhead'>{{ @key }}</h2>
                     {{#each people}}
-                        {{ name }}
+                        <div class='uit-person'>
+                            <div class='uit-person__thumbnail'>
+                                <img class='uit-person__image' src='{{ path }}/assets/{{ handlise name }}.jpg' />
+                                <h3 class='uit-person__name'>{{ name }}</h3>
+                                <h3 class='uit-person__position'>{{ position }}</h3>
+                            </div>
+                            <div class='uit-person__card'>
+                                <p>{{ description }}</p>
+                                {{#if next}}
+                                <p><strong>What happens next</strong><br />{{ next }}</p>
+                                {{/if}}
+                            </div>
+                        </div>
                     {{/each}}
                 </div>
             {{/each}}

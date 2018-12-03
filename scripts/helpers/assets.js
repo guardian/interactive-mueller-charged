@@ -106,6 +106,10 @@ module.exports = {
             return parseInt(value) + 1;
         });
 
+        handlebars.registerHelper('handlise', function(string) {
+            return string.replace(/ /g, '-').toLowerCase();
+        });
+
         handlebars.registerHelper('loop', function(from, to, inc, block) {
                 block = block || {fn: function () { return arguments[0]; }};
 
