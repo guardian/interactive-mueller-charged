@@ -50,8 +50,6 @@ module.exports = function getData() {
         data = result;
         data = sortResults(data);
 
-        console.log(data);
-
         isDone = true;
     });
 
