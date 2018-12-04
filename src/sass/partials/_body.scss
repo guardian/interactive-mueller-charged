@@ -65,10 +65,10 @@
 }
 
 .uit-person__image-wrapper {
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
     background-color: $c-light-grey;
-    border-radius: 24px;
+    border-radius: 100px;
     overflow: hidden;
     margin-bottom: 4px;
 }
@@ -110,22 +110,46 @@
     pointer-events: none;
 }
 
-.uit-group--convicted .uit-group__subhead {
-    @include banding($c-red);
-    color: $c-white;
+.uit-group--convicted {
+    .uit-person__image-wrapper {
+        background-color: $c-red;
+    }
+
+    .uit-group__subhead {
+        @include banding($c-red);
+        color: $c-white;
+    }
 }
 
-.uit-group--pled-guilty .uit-group__subhead {
-    @include banding($c-light-red);
-    color: $c-white;
+.uit-group--pled-guilty {
+    .uit-person__image-wrapper {
+        background-color: $c-light-red;
+    }
+
+    .uit-group__subhead {
+        @include banding($c-light-red);
+        color: $c-white;
+    }
 }
 
-.uit-group--charged .uit-group__subhead {
-    @include banding(lighten($c-light-red, 30%));
-    color: $c-black;
+.uit-group--charged {
+    .uit-person__image-wrapper {
+        background-color: lighten($c-light-red, 30%);
+    }
+
+    .uit-group__subhead {
+        @include banding(lighten($c-light-red, 30%));
+        color: $c-black;
+    }
 }
 
-.uit-group--person-of-interest .uit-group__subhead {
-    @include banding($c-light-grey);
-    color: $c-black;
+.uit-group--person-of-interest {
+    .uit-person__image-wrapper {
+        background-color: $c-light-grey;
+    }
+
+    .uit-group__subhead {
+        @include banding($c-light-grey);
+        color: $c-black;
+    }
 }
