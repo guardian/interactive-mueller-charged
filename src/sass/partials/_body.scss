@@ -49,18 +49,67 @@
         grid-row-gap: 24px;
         grid-column-gap: 20px;
         grid-template-rows: auto;
+        margin-top: 12px;
     }
 
     @include mq(desktop) {
-        grid-template-columns: repeat(4, 1fr);
         grid-row-gap: 12px;
         margin-bottom: 32px;
     }
 }
 
+.uit-person {
+    padding: 3px 0;
+    border-bottom: 1px solid $c-light-grey;
+    margin-bottom: 4px;
+
+    @include mq(tablet) {
+        position: relative;
+        border-bottom: 0;
+        border-top: 1px solid $c-light-grey;
+        border-left: 1px solid $c-light-grey;
+        border-right: 1px solid transparent;
+        padding: 6px;
+        box-sizing: border-box;
+        transition: border 0.4s linear;
+    }
+
+    &:last-of-type {
+        border-bottom: 0;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        z-index: 2001;
+        width: 100%;
+        height: 1px;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        background-color: $c-white;
+        opacity: 0;
+        transition: opacity 0.4s linear;
+    }
+
+    &:hover {
+        @include mq(tablet) {
+            border-color: $c-black;
+
+            &:after,
+            .uit-person__card {
+                opacity: 1;
+            }
+        }
+    }
+}
+
 .uit-person__thumbnail {
-    &:hover ~ .uit-person__card {
-        opacity: 1;
+    display: flex;
+    padding-bottom: 4px;
+
+    @include mq(tablet) {
+        display: block;
     }
 }
 
@@ -71,11 +120,21 @@
     border-radius: 100px;
     overflow: hidden;
     margin-bottom: 4px;
+    flex-shrink: 0;
 }
 
 .uit-person__image {
     width: 100%;
     height: 100%;
+}
+
+.uit-person__bio {
+    padding-left: 8px;
+    padding-top: 6px;
+
+    @include mq(tablet) {
+        padding: 0;
+    }
 }
 
 .uit-person__name {
@@ -95,19 +154,24 @@
 }
 
 .uit-person__card {
-    position: absolute;
-    z-index: 3;
     background-color: $c-white;
-    border: 1px solid $c-black;
-    box-shadow: 3px 3px 0px $c-black;
-    max-width: 320px;
-    box-sizing: border-box;;
-    padding: 6px;
+    box-sizing: border-box;
     font-family: 'Guardian Text Egyptian Web';
     font-size: 16px;
-    transition: opacity 0.4s linear;
-    opacity: 0;
-    pointer-events: none;
+
+    @include mq(tablet) {
+        position: absolute;
+        left: -1px;
+        top: calc(100% - 0px);
+        z-index: 2000;
+        padding: 6px;
+        border: 1px solid $c-black;
+        box-shadow: 3px 3px 0px $c-black;
+        transition: opacity 0.4s linear;
+        opacity: 0;
+        width: 320px;
+        pointer-events: none;
+    }
 }
 
 .uit-group--convicted {
