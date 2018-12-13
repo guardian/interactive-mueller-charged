@@ -26,6 +26,7 @@ function fetchData(callback) {
 
 function sortResults(data) {
     var groups = {
+        'Jailed': {people: []},
         'Convicted': {people: []},
         'Pleaded guilty': {people: []},
         'Charged': {people: []},

@@ -159,6 +159,17 @@
     }
 }
 
+.uit-group--jailed {
+    .uit-person__image-wrapper {
+        background-color: $c-black;
+    }
+
+    .uit-group__subhead {
+        @include banding($c-black);
+        color: $c-white;
+    }
+}
+
 .uit-group--convicted {
     .uit-person__image-wrapper {
         background-color: $c-red;

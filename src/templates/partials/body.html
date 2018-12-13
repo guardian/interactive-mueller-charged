@@ -23,7 +23,7 @@
                                 <div class='uit-person__card'>
                                     {{{ marked description }}}
                                     {{#if next}}
-                                    <p><strong>What happens next?</strong><br />{{ next }}</p>
+                                        <p><strong>{{#if_eq @../key 'Jailed' }}What happened?{{else}}What happens next?{{/if_eq}}</strong><br />{{ next }}</p>
                                     {{/if}}
                                 </div>
                             </div>
