@@ -4,32 +4,34 @@
             <p>Everyone who has been convicted, charged, pleaded guilty or remains a focus of special counsel Robert Mueller’s investigation into Russian interference in the 2016 US election and possible links between the Trump campaign and the Russian government.</p>
 
             {{#each groups}}
-                <div class='uit-group uit-group--{{ handlise @key }}'>
-                    <h2 class='uit-group__subhead'>
-                        <span class='uit-group__subhead__inner'>{{ @key }}</span>
-                    </h2>
-                    <div class='uit-people'>
-                        {{#each people}}
-                            <div class='uit-person'>
-                                <div class='uit-person__thumbnail'>
-                                    <div class='uit-person__image-wrapper'>
-                                        <img class='uit-person__image' src='{{ ../../path }}/assets/{{ handlise name }}.png' />
+                {{#if people}}
+                    <div class='uit-group uit-group--{{ handlise @key }}'>
+                        <h2 class='uit-group__subhead'>
+                            <span class='uit-group__subhead__inner'>{{ @key }}</span>
+                        </h2>
+                        <div class='uit-people'>
+                            {{#each people}}
+                                <div class='uit-person'>
+                                    <div class='uit-person__thumbnail'>
+                                        <div class='uit-person__image-wrapper'>
+                                            <img class='uit-person__image' src='{{ ../../path }}/assets/{{ handlise name }}.png' />
+                                        </div>
+                                        <div class='uit-person__bio'>
+                                            <h3 class='uit-person__name'>{{ name }}</h3>
+                                            <h3 class='uit-person__position'>{{ position }}</h3>
+                                        </div>
                                     </div>
-                                    <div class='uit-person__bio'>
-                                        <h3 class='uit-person__name'>{{ name }}</h3>
-                                        <h3 class='uit-person__position'>{{ position }}</h3>
+                                    <div class='uit-person__card'>
+                                        {{{ marked description }}}
+                                        {{#if next}}
+                                            <p><strong>{{#if_eq @../key 'Jailed' }}What happened?{{else}}What happens next?{{/if_eq}}</strong><br />{{ next }}</p>
+                                        {{/if}}
                                     </div>
                                 </div>
-                                <div class='uit-person__card'>
-                                    {{{ marked description }}}
-                                    {{#if next}}
-                                        <p><strong>{{#if_eq @../key 'Jailed' }}What happened?{{else}}What happens next?{{/if_eq}}</strong><br />{{ next }}</p>
-                                    {{/if}}
-                                </div>
-                            </div>
-                        {{/each}}
+                            {{/each}}
+                        </div>
                     </div>
-                </div>
+                {{/if}}
             {{/each}}
         </div>
     </div>
